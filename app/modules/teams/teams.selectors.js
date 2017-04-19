@@ -2,8 +2,6 @@ import { createSelector } from 'reselect';
 import { toNumber, round } from 'lodash';
 
 const MULTIPLIER = 1000000;
-const COUNT_OF_TEAMS = 20;
-
 
 const selectTeamsDomain = state => state.get('teams');
 
@@ -26,13 +24,13 @@ export const filterTeamsListBySquadValue = createSelector(
 );
 
 export const selectArithmeticAverage = createSelector(
-  filterTeamsListBySquadValue, state => {
-    const sum = state.reduce((prevVal, element) => {
-      const squadMarket = toNumber(element.get('squadMarketValue').replace(' €', '').replace(/,/g, ''));
-
+  filterTeamsListBySquadValue,
+  teams => {
+    const sum = teams.reduce((prevVal, element) => {
+      const squadMarket = toNumber(element.get('squadMarketValue').replace(/[( €),]/g, ''));
       return prevVal + squadMarket;
     }, 0);
 
-    return round(sum / COUNT_OF_TEAMS);
+    return round(sum / Math.max(1, teams.size));
   }
 );
