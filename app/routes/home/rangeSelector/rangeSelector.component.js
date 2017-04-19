@@ -7,7 +7,7 @@ import messages from './rangeSelector.messages';
 const MIN_VALUE = 0;
 const MAX_VALUE = 600;
 
-class RangeSelector extends PureComponent {
+export class RangeSelector extends PureComponent {
   static propTypes = {
     rangeValues: PropTypes.object,
     setRangeValues: PropTypes.func.isRequired,

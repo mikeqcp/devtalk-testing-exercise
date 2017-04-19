@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from './home.messages';
 import AverageValue from './averageValue/averageValue.component';
 import TeamsList from './teamsList/teamsList.component';
-import RangeSelector from './rangeSelector/rangeSelector.component';
+import RangeSelectorContainer from './rangeSelector/rangeSelector.component';
 import LanguageSelector from './languageSelector/languageSelector.component';
 
 
@@ -51,7 +51,7 @@ export default class Home extends PureComponent {
           <AverageValue arithmeticAverage={this.props.arithmeticAverage} />
         </div>
 
-        <RangeSelector
+        <RangeSelectorContainer
           rangeValues={this.props.rangeValues}
           setRangeValues={this.props.setRangeValues}
         />
